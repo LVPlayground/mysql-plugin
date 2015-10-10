@@ -74,12 +74,13 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;HAVE_STDINT_H;HELLOWORLD_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;HAVE_STDINT_H;HAVE_STRUCT_TIMESPEC;HELLOWORLD_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <PrecompiledHeader>
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\libmysql\include;$(SolutionDir)..\libmysql\lvpbuild\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <ModuleDefinitionFile>mysql-plugin.def</ModuleDefinitionFile>
@@ -88,18 +89,44 @@
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <TargetMachine>MachineX86</TargetMachine>
+      <AdditionalDependencies>$(SolutionDir)..\libmysql\lvpbuild\libmysql\RelWithDebInfo\libmysql.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ConnectionClient.cpp" />
+    <ClCompile Include="ConnectionController.cpp" />
+    <ClCompile Include="ConnectionHost.cpp" />
+    <ClCompile Include="DebugPrinter.cpp" />
+    <ClCompile Include="Mutex.cpp" />
+    <ClCompile Include="plugin.cpp" />
+    <ClCompile Include="QueryBuilder.cpp" />
+    <ClCompile Include="ResultController.cpp" />
+    <ClCompile Include="Script.cpp" />
     <ClCompile Include="sdk\amxplugin.cpp" />
     <ClCompile Include="sdk\getch.c" />
+    <ClCompile Include="StatementRegistry.cpp" />
+    <ClCompile Include="Thread.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ConnectionClient.h" />
+    <ClInclude Include="ConnectionController.h" />
+    <ClInclude Include="ConnectionHost.h" />
+    <ClInclude Include="ConnectionMessages.h" />
+    <ClInclude Include="DebugPrinter.h" />
+    <ClInclude Include="Mutex.h" />
+    <ClInclude Include="QueryBuilder.h" />
+    <ClInclude Include="ResultController.h" />
+    <ClInclude Include="ResultEntry.h" />
+    <ClInclude Include="ScopedMutex.h" />
+    <ClInclude Include="Script.h" />
     <ClInclude Include="sdk\amx.h" />
     <ClInclude Include="sdk\getch.h" />
     <ClInclude Include="sdk\plugin.h" />
     <ClInclude Include="sdk\plugincommon.h" />
     <ClInclude Include="sdk\sclinux.h" />
+    <ClInclude Include="StatementRegistry.h" />
+    <ClInclude Include="Thread.h" />
+    <ClInclude Include="ThreadSafeQueue.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

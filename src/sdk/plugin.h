@@ -8,6 +8,8 @@
 #include "plugincommon.h"
 #include "amx.h"
 
+#ifndef amx_StrParam
+
 #define amx_StrParam(amx,param,result)                                      \
     do {                                                                    \
       cell *amx_cstr_; int amx_length_;                                     \
@@ -18,6 +20,8 @@
         amx_GetString((char*)(result), amx_cstr_, sizeof(*(result))>1, amx_length_ + 1); \
       else (result) = "";                                                 \
     } while (0)
+
+#endif
 
 extern char g_paramBuffer[256];
 inline const char* string_param(AMX* amx, cell param) {

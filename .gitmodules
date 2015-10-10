@@ -2,3 +2,4 @@
 	path = libmysql
 	url = https://github.com/mysql/mysql-server.git
 	branch = 5.5
+	ignore = dirty
