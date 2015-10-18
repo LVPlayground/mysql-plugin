@@ -3,7 +3,7 @@
 $(shell [ -d "out" ] || mkdir -p out)
 
 OUTFILE=mysql-plugin.so
-COMPILE_FLAGS=-c -m32 -fPIC -O3 -std=gnu++0x -w -DLINUX -I. -I../libmysql/include -I../libmysql/lvpbuild/include
+COMPILE_FLAGS=-c -m32 -fPIC -O3 -std=gnu++0x -w -DLINUX -I/usr/include/mysql -I.
 LINK_FLAGS=-O2 -m32 -fshort-wchar -shared -static -lpthread
 
 all:
@@ -19,5 +19,5 @@ all:
 	g++ $(COMPILE_FLAGS) ResultController.cpp -o out/ResultController.o
 	g++ $(COMPILE_FLAGS) Script.cpp -o out/Script.o
 	g++ $(COMPILE_FLAGS) StatementRegistry.cpp -o out/StatementRegistry.o
-	g++ $(LINK_FLAGS) -o out/$(OUTFILE) out/*.o ../libmysql/lvpbuild/libmysql/libmysqlclient.so
+	g++ $(LINK_FLAGS) -o out/$(OUTFILE) out/*.o -lmysqlclient
 	strip out/$(OUTFILE)

@@ -42,7 +42,10 @@ void ConnectionHost::close() {
 void ConnectionHost::query(const char* query, const char* callback, unsigned int dataId) {
 	ConnectionMessages::QueryInformation request;
 	request.query = query;
-	request.callback = callback;
+
+  if (callback)
+  	request.callback = callback;
+
 	request.dataId = dataId;
 
 	client_->query_queue_.push(request);

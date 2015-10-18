@@ -40,6 +40,9 @@ static cell AMX_NATIVE_CALL n_mysql_connect(AMX* amx, cell* params) {
 	amx_StrParam(amx, params[4], database);
 	unsigned int port = params[5];
 
+  if (!hostname || !username || !password || !database)
+    return 0;
+
 	Script script(amx);
 	return connectionController->connect(script, hostname, username, password, database, port);
 }
@@ -69,6 +72,9 @@ static cell AMX_NATIVE_CALL n_mysql_query(AMX* amx, cell* params) {
 	amx_StrParam(amx, params[2], query);
 	amx_StrParam(amx, params[3], callback);
 	unsigned int dataId = params[4];
+
+  if (!query)
+    return 0;
 
 	connection->query(query, callback, dataId);
 	return 1;
