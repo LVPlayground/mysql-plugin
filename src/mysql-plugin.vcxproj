@@ -80,7 +80,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <AdditionalIncludeDirectories>$(SolutionDir)..\libmysql\include;$(SolutionDir)..\libmysql\lvpbuild\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\libmysql\include;$(SolutionDir)..\libmysql\lvpbuild\include;$(SolutionDir)..\libmysql\libbinlogevents\export</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <ModuleDefinitionFile>mysql-plugin.def</ModuleDefinitionFile>
