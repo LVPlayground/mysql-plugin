@@ -12,7 +12,7 @@
 #include <my_sys.h>
 #include <mysql.h>
 
-class ConnectionClient : public Thread, protected ConnectionMessages {
+class ConnectionClient : public Thread, public ConnectionMessages {
 	friend class ConnectionHost;
 
 	struct ConnectionStatus {

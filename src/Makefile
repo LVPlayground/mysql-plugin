@@ -7,17 +7,16 @@ COMPILE_FLAGS=-c -m32 -fPIC -O3 -std=gnu++0x -w -DLINUX -I/usr/include/mysql -I.
 LINK_FLAGS=-O2 -m32 -fshort-wchar -Wl,--export-dynamic -shared -static -lpthread
 
 all:
-	g++ $(COMPILE_FLAGS) sdk/amxplugin.cpp -o out/amxplugin.o
-	g++ $(COMPILE_FLAGS) Mutex.cpp -o out/Mutex.o
-	g++ $(COMPILE_FLAGS) Thread.cpp -o out/Thread.o
-	g++ $(COMPILE_FLAGS) ConnectionClient.cpp -o out/ConnectionClient.o
-	g++ $(COMPILE_FLAGS) ConnectionController.cpp -o out/ConnectionController.o
-	g++ $(COMPILE_FLAGS) ConnectionHost.cpp -o out/ConnectionHost.o
-	g++ $(COMPILE_FLAGS) DebugPrinter.cpp -o out/DebugPrinter.o
-	g++ $(COMPILE_FLAGS) plugin.cpp -o out/plugin.o
-	g++ $(COMPILE_FLAGS) QueryBuilder.cpp -o out/QueryBuilder.o
-	g++ $(COMPILE_FLAGS) ResultController.cpp -o out/ResultController.o
-	g++ $(COMPILE_FLAGS) Script.cpp -o out/Script.o
-	g++ $(COMPILE_FLAGS) StatementRegistry.cpp -o out/StatementRegistry.o
-	g++ $(LINK_FLAGS) -o out/$(OUTFILE) out/*.o -lmysqlclient
-	strip out/$(OUTFILE)
+	clang $(COMPILE_FLAGS) sdk/amxplugin.cpp -o out/amxplugin.o
+	clang $(COMPILE_FLAGS) Mutex.cpp -o out/Mutex.o
+	clang $(COMPILE_FLAGS) Thread.cpp -o out/Thread.o
+	clang $(COMPILE_FLAGS) ConnectionClient.cpp -o out/ConnectionClient.o
+	clang $(COMPILE_FLAGS) ConnectionController.cpp -o out/ConnectionController.o
+	clang $(COMPILE_FLAGS) ConnectionHost.cpp -o out/ConnectionHost.o
+	clang $(COMPILE_FLAGS) DebugPrinter.cpp -o out/DebugPrinter.o
+	clang $(COMPILE_FLAGS) plugin.cpp -o out/plugin.o
+	clang $(COMPILE_FLAGS) QueryBuilder.cpp -o out/QueryBuilder.o
+	clang $(COMPILE_FLAGS) ResultController.cpp -o out/ResultController.o
+	clang $(COMPILE_FLAGS) Script.cpp -o out/Script.o
+	clang $(COMPILE_FLAGS) StatementRegistry.cpp -o out/StatementRegistry.o
+	clang $(LINK_FLAGS) -o out/$(OUTFILE) out/*.o -lmysqlclient
