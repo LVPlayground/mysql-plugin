@@ -7,7 +7,7 @@
 #include <string>
 
 class ConnectionMessages {
-protected:
+public:
 	// Definitions for the messages we can pass between the host and client threads.
 
 	struct ConnectionInformation {
