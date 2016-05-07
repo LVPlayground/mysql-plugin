@@ -26,6 +26,12 @@ ConnectionController* connectionController = 0;
 ResultController* resultController = 0;
 StatementRegistry* statementRegistry = 0;
 
+namespace {
+
+unsigned int g_frame_counter = 0;
+
+}  // namespace
+
 // -----------------------------------------------------------------------------
 
 // native mysql_connect(const hostname[], const username[], const password[], const database[], port = 3306);
@@ -360,6 +366,11 @@ PLUGIN_EXPORT void PLUGIN_CALL Unload() {
 }
 
 PLUGIN_EXPORT void PLUGIN_CALL ProcessTick() {
+  if (g_frame_counter++ < 10)
+    return;
+
+  g_frame_counter = 0;
+
 	connectionController->processTick();
 }
 
