@@ -6,10 +6,16 @@ This guide should only be applicable to Windows. Linux users can just run `make`
 ## Building libmysql
 Follow [the MySQL installation guide](http://dev.mysql.com/doc/refman/5.5/en/source-installation.html) for information on how to build MySQL.
 
-The following commands successfully produced a build on Windows.
-
     $ mkdir libmysql/lvpbuild
     $ cd libmysql/lvpbuild
+
+Use the following commands to create an x32 build on Windows:
+
+    $ cmake -DDOWNLOAD_BOOST=1 -DWITH_BOOST="C:\Boost_1_59_0" -DENABLE_DOWNLOADS=1 .. -G "Visual Studio 16 2019" -A Win32
+    $ cmake --build . --config relwithdebinfo --target libmysql
+
+…or the following commands to create one for Linux:
+
     $ cmake -DCMAKE_C_FLAGS="-m32" -DCMAKE_CXX_FLAGS="-m32" ..
     $ CMAKE_C_FLAGS="-m32" CMAKE_CXX_FLAGS="-m32" cmake --build . --config relwithdebinfo --target libmysql
 
